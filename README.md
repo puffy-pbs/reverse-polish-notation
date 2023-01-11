@@ -12,8 +12,11 @@ Rather than the normal convention(infix) of:
 <FirstNumber> <Operation> <SecondNumber>
 
 Examples:
+  
 3 4 +
+  
 3 5 6 + *
+  
 2 4 / 5 6 - *
 
 references - https://en.wikibooks.org/wiki/A-level_Computing_2009/AQA/Problem_Solving,_Programming,_Operating_Systems,_Databases_and_Networking/Problem_Solving/Reverse_Polish_Notation
