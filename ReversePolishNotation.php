@@ -2,12 +2,25 @@
 
 class ReversePolishNotation
 {
+    /** @var string OPENING_BRACKET */
     private const OPENING_BRACKET= '(';
+
+    /** @var string CLOSING_BRACKET */
     private const CLOSING_BRACKET = ')';
+
+    /** @var string PLUS_SIGN */
     private const PLUS_SIGN = '+';
+
+    /** @var string MINUS_SIGN */
     private const MINUS_SIGN = '-';
+
+    /** @var string MULTIPLY_SIGN */
     private const MULTIPLY_SIGN = '*';
+
+    /** @var string DIVISION_SIGN */
     private const DIVISION_SIGN = '/';
+
+    /** @var string[] CONTROL_CHARACTERS */
     private const CONTROL_CHARACTERS = [
         self::OPENING_BRACKET,
         self::CLOSING_BRACKET,
@@ -16,6 +29,8 @@ class ReversePolishNotation
         self::MULTIPLY_SIGN,
         self::DIVISION_SIGN,
     ];
+
+    /** @var string[] OPERATORS */
     private const OPERATORS = [
         self::PLUS_SIGN,
         self::MINUS_SIGN,
@@ -88,6 +103,11 @@ class ReversePolishNotation
         return $this->calculateReversePolishNotationExpression($queue);
     }
 
+    /**
+     * Check if the input is valid
+     * @param $input
+     * @return bool
+     */
     private function isInputValid($input): bool
     {
         if (!is_string($input)) {
@@ -112,6 +132,7 @@ class ReversePolishNotation
     }
 
     /**
+     * Is character a control character?
      * @param string $character
      * @return bool
      */
@@ -120,6 +141,7 @@ class ReversePolishNotation
     }
 
     /**
+     * Is character an opening bracket?
      * @param string $character
      * @return bool
      */
@@ -129,6 +151,7 @@ class ReversePolishNotation
     }
 
     /**
+     * Is character a closing bracket?
      * @param string $character
      * @return bool
      */
@@ -138,6 +161,7 @@ class ReversePolishNotation
     }
 
     /**
+     * Is character an operator?
      * @param string $character
      * @return bool
      */
@@ -146,8 +170,9 @@ class ReversePolishNotation
         return in_array($character, self::OPERATORS, true);
     }
 
-    /** Get priority based on the function arguments.
-     *  Multiply and division signs always has precedence than minus and plus
+    /**
+     * Get priority based on the function arguments.
+     * Multiply and division signs always has precedence than minus and plus
      * @param string $operator
      * @param string $value
      * @return int
@@ -166,7 +191,8 @@ class ReversePolishNotation
         }
     }
 
-    /** Is the argument operand?
+    /**
+     * Is the character an operand?
      * @param string $character
      * @return bool
      */
@@ -175,7 +201,8 @@ class ReversePolishNotation
         return !$this->isOperator($character) && is_numeric($character);
     }
 
-    /** A simple formatting to work easily with the values - it just places some spaces
+    /**
+     * A simple formatting to work easily with the values - it just places some spaces
      * @param string $input
      * @return string
      */
@@ -193,7 +220,8 @@ class ReversePolishNotation
         return join('', $output);
     }
 
-    /** This function calculates the operation on two operands - "1 / 2", "2 + 1" for an example
+    /**
+     * This function calculates the operation on two operands - "1 / 2", "2 + 1" for an example
      * @param float $firstOperand
      * @param float $secondOperand
      * @param string $operator
